@@ -11,9 +11,6 @@ import com.example.coino.feature_coins.data.repositories.local.CoinsDatabase
 import com.example.coino.feature_coins.data.repositories.local.CoinsEntity
 import com.example.coino.feature_coins.data.repositories.remote.CoinGeckoApi
 import com.example.coino.feature_coins.domain.CoinsRepository
-import com.example.coino.feature_search.data.repositories.SearchCoinsRepositoryImpl
-import com.example.coino.feature_search.data.repositories.remote.SearchCoinApi
-import com.example.coino.feature_search.domain.SearchCoinsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,12 +27,6 @@ object CoinRepositoryModule {
     @Provides
     fun providesCoinListRepository(api: CoinGeckoApi): CoinsRepository {
         return CoinsRepositoryImpl(api)
-    }
-
-    @Singleton
-    @Provides
-    fun ProvidesCoinSearchRepository(api: SearchCoinApi): SearchCoinsRepository {
-        return SearchCoinsRepositoryImpl(api)
     }
 
     @Provides

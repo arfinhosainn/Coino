@@ -2,7 +2,6 @@ package com.example.coino.di
 
 import com.example.coino.core.util.BASE_URL
 import com.example.coino.feature_coins.data.repositories.remote.CoinGeckoApi
-import com.example.coino.feature_search.data.repositories.remote.SearchCoinApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,13 +24,5 @@ object NetworkModule {
             .create(CoinGeckoApi::class.java)
     }
 
-    @Singleton
-    @Provides
-    fun provideSearchCoinApi(): SearchCoinApi {
-        return Retrofit.Builder().baseUrl(BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create())
-            .build()
-            .create(SearchCoinApi::class.java)
-    }
 
 }
