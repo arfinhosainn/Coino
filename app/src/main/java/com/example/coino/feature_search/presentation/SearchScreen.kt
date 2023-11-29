@@ -2,12 +2,10 @@ package com.example.coino.feature_search.presentation
 
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -16,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.coino.feature_search.presentation.components.SearchToolbar
 
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(
@@ -26,9 +23,6 @@ fun SearchScreen(
     val searchResultUiState by searchCoinsViewModel.searchResultUiState.collectAsState()
     val searchQuery by searchCoinsViewModel.searchQuery.collectAsState()
 
-    Log.d("search", "SearchScreen: $searchQuery")
-
-
     Column(modifier = Modifier.fillMaxSize()) {
         SearchToolbar(
             onBackClick = { },
@@ -36,13 +30,11 @@ fun SearchScreen(
             onSearchQueryChanged = searchCoinsViewModel::onSearchQueryChanged,
             onSearchTriggered = {
                 searchCoinsViewModel.searchResult(it)
-                Log.d("Search", "Kola: $it")
             }
         )
         LazyColumn {
             items(searchResultUiState.coins) {
                 Text(text = it.name)
-                Log.d("Search", "Kola1: $it  ")
             }
         }
 
