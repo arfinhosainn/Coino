@@ -56,12 +56,3 @@ fun HomeScreen(
         }
     }
 }
-
-@Composable
-fun CoinGainersContent(
-
-) {
-
-
-
-}

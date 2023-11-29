@@ -8,7 +8,6 @@ import androidx.paging.map
 import com.example.coino.feature_coins.data.repositories.local.CoinsEntity
 import com.example.coino.feature_coins.data.repositories.remote.DTOs.toCoins
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
