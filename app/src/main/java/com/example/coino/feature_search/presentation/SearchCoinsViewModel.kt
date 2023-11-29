@@ -33,12 +33,16 @@ class SearchCoinsViewModel @Inject constructor(
                     }
 
                     is Resource.Loading -> {
-                        Unit
+                        searchResultUiState.value = SearchResultUiState(
+                            isLoading = true
+                        )
 
                     }
 
                     is Resource.Error -> {
-                        Unit
+                        searchResultUiState.value = SearchResultUiState(
+                            error = result.message ?: "There's something wrong"
+                        )
                     }
                 }
 
