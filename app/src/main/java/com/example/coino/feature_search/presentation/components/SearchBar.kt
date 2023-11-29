@@ -155,7 +155,7 @@ private fun SearchTextField(
 @Composable
 private fun SearchToolbarPreview() {
     var text by remember {
-        mutableStateOf("Youa re a good boy")
+        mutableStateOf("Search")
     }
     CoinoCryptoMarketTheme {
         SearchToolbar(
