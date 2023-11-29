@@ -18,6 +18,6 @@ fun CoinDtos.toSearchCoins(): SearchCoins {
         id = id,
         name = name,
         symbol = symbol,
-        thumb = thumb
+        large = large
     )
 }
