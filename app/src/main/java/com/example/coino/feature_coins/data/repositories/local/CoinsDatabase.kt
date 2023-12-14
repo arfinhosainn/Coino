@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 @Database(
     entities = [CoinsEntity::class],
     version = 1,
-    exportSchema = true
+    exportSchema = false
 )
 abstract class CoinsDatabase : RoomDatabase() {
     abstract val dao: CoinsDao

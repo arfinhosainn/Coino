@@ -1,5 +1,8 @@
 package com.example.coino.feature_coins.domain.model
 
+import androidx.compose.runtime.Immutable
+
+@Immutable
 data class Coins(
     val current_price: Double,
     val id: String,

@@ -40,7 +40,7 @@ fun HomeScreen(
         } else {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 items(
-                    count = coins.itemCount,
+                    count = coins.itemCount
                 ) { index: Int ->
                     val coinList: Coins? = coins[index]
                     if (coinList != null) {
