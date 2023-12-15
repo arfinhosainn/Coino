@@ -3,8 +3,10 @@ package com.example.coino.feature_coins.data.repositories
 import android.util.Log
 import com.example.coino.core.util.Resource
 import com.example.coino.feature_coins.data.repositories.remote.CoinGeckoApi
+import com.example.coino.feature_coins.data.repositories.remote.DTOs.toCoinPrice
 import com.example.coino.feature_coins.data.repositories.remote.DTOs.toCoins
 import com.example.coino.feature_coins.domain.CoinsRepository
+import com.example.coino.feature_coins.domain.model.CoinPrices
 import com.example.coino.feature_coins.domain.model.Coins
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -35,9 +37,26 @@ class CoinsRepositoryImpl @Inject constructor(
             emit(Resource.Success(coinsResult))
             Log.d("coinResult", "getCoins: $coinsResult")
         } catch (e: HttpException) {
-            emit(Resource.Error( "An unexpected error occurred"))
+            emit(Resource.Error("An unexpected error occurred"))
         } catch (e: IOException) {
             emit(Resource.Error("Couldn't reach server. Check your internet connection."))
         }
     }
+
+    override fun getCoinPrices(currency: String, days: Int): Flow<Resource<CoinPrices>> =
+        flow {
+            try {
+                emit(Resource.Loading())
+                val coinPrices = api.getCoinPrices(
+                    currency, days
+                ).toCoinPrice()
+                emit(Resource.Success(coinPrices))
+                Log.d("prices", "getCoinPrices: $coinPrices")
+            } catch (e: HttpException) {
+                emit(Resource.Error("An unexpected error occurred"))
+            } catch (e: IOException) {
+                emit(Resource.Error("Couldn't reach server. Check your internet connection."))
+            }
+
+        }
 }

@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.coino.feature_coins.presentation.coins_screen.CoinListViewModel
-import com.example.coino.feature_coins.presentation.coins_screen.HomeScreen
+import com.example.coino.feature_coins.presentation.detail_screen.components.RealLineChart
 import com.example.coino.ui.theme.CoinoCryptoMarketTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,8 +28,9 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val viewModel: CoinListViewModel = hiltViewModel()
                     val coins = viewModel.coinsPagingFlow.collectAsLazyPagingItems()
-                    HomeScreen(coins = coins)
+//                    HomeScreen(coins = coins)
 
+                    RealLineChart()
                 }
             }
         }
