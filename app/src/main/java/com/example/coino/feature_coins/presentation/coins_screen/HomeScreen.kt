@@ -10,14 +10,17 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
+import com.example.coino.core.util.Screen
 import com.example.coino.feature_coins.domain.model.Coins
 import com.example.coino.feature_coins.presentation.components.SingleCoin
 
 @Composable
 fun HomeScreen(
-    coins: LazyPagingItems<Coins>
+    coins: LazyPagingItems<Coins>,
+    navController: NavController
 ) {
 
     val context = LocalContext.current
@@ -44,7 +47,10 @@ fun HomeScreen(
                 ) { index: Int ->
                     val coinList: Coins? = coins[index]
                     if (coinList != null) {
-                        SingleCoin(coins = coinList)
+                        SingleCoin(coins = coinList,
+                            onItemClick = {
+                                navController.navigate(Screen.CoinDetailsScreen.route + "/${it.id}")
+                            })
                     }
                 }
                 item {

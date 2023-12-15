@@ -109,10 +109,6 @@ fun RealLineChart(
     viewModel: DetailsScreenViewModel = hiltViewModel()
 ) {
 
-    Column(modifier = Modifier.padding(50.dp)) {
-
-    }
-
     val result = viewModel.state.value
 
     result.price?.let { LineCharts(prices = it) }

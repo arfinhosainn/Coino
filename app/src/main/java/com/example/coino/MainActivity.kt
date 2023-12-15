@@ -8,10 +8,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.coino.feature_coins.presentation.coins_screen.CoinListViewModel
 import com.example.coino.feature_coins.presentation.components.RealLineChart
-import com.example.coino.ui.theme.CoinoCryptoMarketTheme
+import com.example.coino.presentation.navigation.Navigation
+import com.example.coino.presentation.theme.CoinoCryptoMarketTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -26,11 +28,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val viewModel: CoinListViewModel = hiltViewModel()
-                    val coins = viewModel.coinsPagingFlow.collectAsLazyPagingItems()
-//                    HomeScreen(coins = coins)
 
-                    RealLineChart()
+                    val navController = rememberNavController()
+
+                    Navigation(navController = navController
+                    )
                 }
             }
         }

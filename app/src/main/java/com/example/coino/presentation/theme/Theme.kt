@@ -1,4 +1,4 @@
-package com.example.coino.ui.theme
+package com.example.coino.presentation.theme
 
 import android.app.Activity
 import android.os.Build

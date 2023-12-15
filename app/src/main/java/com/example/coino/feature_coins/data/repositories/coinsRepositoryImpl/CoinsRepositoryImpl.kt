@@ -43,12 +43,12 @@ class CoinsRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getCoinPrices(currency: String, days: Int): Flow<Resource<CoinPrices>> =
+    override fun getCoinPrices(id: String, currency: String, days: Int): Flow<Resource<CoinPrices>> =
         flow {
             try {
                 emit(Resource.Loading())
                 val coinPrices = api.getCoinPrices(
-                    currency, days
+                    id = id, currency = currency, days = days
                 ).toCoinPrice()
                 emit(Resource.Success(coinPrices))
                 Log.d("prices", "getCoinPrices: $coinPrices")

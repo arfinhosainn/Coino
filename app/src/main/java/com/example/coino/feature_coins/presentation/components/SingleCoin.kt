@@ -25,9 +25,10 @@ import com.example.coino.feature_coins.domain.model.Coins
 
 @Composable
 fun SingleCoin(
-    coins: Coins
+    coins: Coins,
+    onItemClick: (Coins) -> Unit
 ) {
-    Surface(onClick = { /* TODO */ }, shape = MaterialTheme.shapes.large) {
+    Surface(onClick = {onItemClick(coins)}, shape = MaterialTheme.shapes.large) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier

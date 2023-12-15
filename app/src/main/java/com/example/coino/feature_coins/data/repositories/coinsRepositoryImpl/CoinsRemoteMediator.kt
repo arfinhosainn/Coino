@@ -7,9 +7,9 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import co.yml.charts.common.extensions.isNotNull
-import com.example.coino.core.util.COINS_ORDER
-import com.example.coino.core.util.COINS_PRICE_CHANGE_IN_HOUR
-import com.example.coino.core.util.CURRENCY
+import com.example.coino.core.common.COINS_ORDER
+import com.example.coino.core.common.COINS_PRICE_CHANGE_IN_HOUR
+import com.example.coino.core.common.CURRENCY
 import com.example.coino.feature_coins.data.repositories.local.CoinsDatabase
 import com.example.coino.feature_coins.data.repositories.local.CoinsEntity
 import com.example.coino.feature_coins.data.repositories.remote.CoinGeckoApi

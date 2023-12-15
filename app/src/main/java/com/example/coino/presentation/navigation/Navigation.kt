@@ -1,0 +1,27 @@
+package com.example.coino.presentation.navigation
+
+import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.coino.core.util.Screen
+import com.example.coino.feature_coins.presentation.coins_screen.CoinListViewModel
+import com.example.coino.feature_coins.presentation.coins_screen.HomeScreen
+import com.example.coino.feature_coins.presentation.components.RealLineChart
+
+@Composable
+fun Navigation(navController: NavHostController) {
+    NavHost(navController = navController, startDestination = Screen.CoinListScreen.route) {
+        composable(route = Screen.CoinListScreen.route) {
+            val viewModel: CoinListViewModel = hiltViewModel()
+            val coins = viewModel.coinsPagingFlow.collectAsLazyPagingItems()
+            HomeScreen(coins = coins, navController)
+        }
+        composable(route = Screen.CoinDetailsScreen.route + "/{id}"){
+            RealLineChart()
+        }
+    }
+
+}
