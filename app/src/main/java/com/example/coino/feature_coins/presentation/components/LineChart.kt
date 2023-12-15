@@ -1,14 +1,15 @@
-package com.example.coino.feature_coins.presentation.detail_screen.components
+package com.example.coino.feature_coins.presentation.components
 
 import android.util.Log
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.DrawStyle
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -33,8 +34,17 @@ fun LineCharts(
     prices: CoinPrices
 ) {
 
+    val points = mutableListOf<Point>()
+
+    prices.prices.forEach { priceList ->
+        val x = priceList[0].toFloat()
+        val y = priceList[1].toFloat()
+        points.add(Point(x, y))
+    }
+
+
     val xAxisData = AxisData.Builder()
-        .axisStepSize(2.dp)
+        .axisStepSize(0.1.dp)
         .backgroundColor(color = Color.Transparent)
         .steps(prices.prices.size - 1)
         .labelData { i -> i.toString() }
@@ -58,21 +68,10 @@ fun LineCharts(
 
     val lineChartData = LineChartData(
         linePlotData = LinePlotData(
-            lines = prices.prices.map { priceList ->
-                val point =
-                    listOf(
-                        Point(
-                            x = priceList.get(1).toFloat(),
-                            y = priceList.get(0).toFloat()
-                        )
-                    )
+            lines = listOf(
                 Line(
-                    dataPoints = point,
-                    LineStyle(
-                        color = MaterialTheme.colorScheme.tertiary,
-                        lineType = LineType.SmoothCurve(),
-                        style = Stroke(width = 120f)
-                    ),
+                    dataPoints = points,
+                    LineStyle(lineType = LineType.Straight()),
                     IntersectionPoint(
                         color = MaterialTheme.colorScheme.tertiary
                     ),
@@ -88,18 +87,19 @@ fun LineCharts(
                     ),
                     SelectionHighlightPopUp()
                 )
-            }
+            )
+
         ),
         backgroundColor = MaterialTheme.colorScheme.surface,
         xAxisData = xAxisData,
         yAxisData = yAxisData
 
+
     )
 
     LineChart(modifier = Modifier
         .fillMaxHeight()
-        .height(300.dp)
-        .height(300.dp), lineChartData = lineChartData)
+        .height(50.dp), lineChartData = lineChartData)
 
 
 }
@@ -108,6 +108,10 @@ fun LineCharts(
 fun RealLineChart(
     viewModel: DetailsScreenViewModel = hiltViewModel()
 ) {
+
+    Column(modifier = Modifier.padding(50.dp)) {
+
+    }
 
     val result = viewModel.state.value
 

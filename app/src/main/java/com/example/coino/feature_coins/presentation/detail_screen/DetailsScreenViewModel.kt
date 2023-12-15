@@ -27,7 +27,7 @@ class DetailsScreenViewModel @Inject constructor(
 
     private fun getPriceStats() {
         repository.getCoinPrices(
-            currency = "usd", days = 7
+            currency = "usd", days = 1
         ).onEach { result ->
             when (result) {
                 is Resource.Success -> {

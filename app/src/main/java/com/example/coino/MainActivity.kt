@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.coino.feature_coins.presentation.coins_screen.CoinListViewModel
-import com.example.coino.feature_coins.presentation.detail_screen.components.RealLineChart
+import com.example.coino.feature_coins.presentation.components.RealLineChart
 import com.example.coino.ui.theme.CoinoCryptoMarketTheme
 import dagger.hilt.android.AndroidEntryPoint
 
