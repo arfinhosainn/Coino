@@ -47,7 +47,7 @@ fun LineCharts(
 
 
     val xAxisData = AxisData.Builder()
-        .axisStepSize(0.0001.dp)
+        .axisStepSize(0.00009.dp)
         .backgroundColor(color = Color.Transparent)
         .labelAndAxisLinePadding(15.dp)
         .axisLineColor(MaterialTheme.colorScheme.tertiary)
@@ -110,9 +110,11 @@ fun RealLineChart(
     viewModel: DetailsScreenViewModel = hiltViewModel()
 ) {
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(vertical = 250.dp)) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(vertical = 230.dp)
+    ) {
 
         val result = viewModel.state.value
 
