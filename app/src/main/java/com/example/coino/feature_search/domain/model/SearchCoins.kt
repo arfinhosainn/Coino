@@ -6,5 +6,6 @@ data class SearchCoins(
     val name: String,
     val symbol: String,
     val large: String,
+    val isFavorite: Boolean
 )
 

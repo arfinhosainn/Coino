@@ -56,7 +56,10 @@ fun SearchScreen(
             } else {
                 LazyColumn {
                     items(searchResultUiState.coins) { coin ->
-                        SearchItem(searchCoins = coin)
+                        SearchItem(
+                            searchCoins = coin,
+                            onFavoriteSwitched = { searchCoinsViewModel.onFavoriteSwitch(TODO()) }
+                        )
                     }
                 }
             }
