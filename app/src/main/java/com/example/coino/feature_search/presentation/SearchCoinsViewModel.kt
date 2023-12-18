@@ -7,7 +7,6 @@ import com.example.coino.core.util.Resource
 import com.example.coino.feature_search.domain.SearchCoinsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -33,12 +32,16 @@ class SearchCoinsViewModel @Inject constructor(
                     }
 
                     is Resource.Loading -> {
-                        Unit
+                        searchResultUiState.value = SearchResultUiState(
+                            isLoading = true
+                        )
 
                     }
 
                     is Resource.Error -> {
-                        Unit
+                        searchResultUiState.value = SearchResultUiState(
+                            error = result.message ?: "There's something wrong"
+                        )
                     }
                 }
 
@@ -49,7 +52,9 @@ class SearchCoinsViewModel @Inject constructor(
     fun onSearchQueryChanged(query: String) {
         savedStateHandle[SEARCH_QUERY] = query
     }
+    fun onFavoriteSwitch(boolean: Boolean) {
 
+    }
 }
 
 

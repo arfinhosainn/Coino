@@ -9,7 +9,8 @@ data class CoinDtos(
     val market_cap_rank: Int?,
     val name: String,
     val symbol: String,
-    val thumb: String
+    val thumb: String,
+    val is_favorite: Boolean
 )
 
 fun CoinDtos.toSearchCoins(): SearchCoins {
@@ -18,6 +19,7 @@ fun CoinDtos.toSearchCoins(): SearchCoins {
         id = id,
         name = name,
         symbol = symbol,
-        thumb = thumb
+        large = large,
+        isFavorite = is_favorite
     )
 }
