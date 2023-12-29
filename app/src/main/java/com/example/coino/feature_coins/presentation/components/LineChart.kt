@@ -30,7 +30,9 @@ import co.yml.charts.ui.linechart.model.SelectionHighlightPopUp
 import co.yml.charts.ui.linechart.model.ShadowUnderLine
 import com.example.coino.feature_coins.domain.model.CoinPrices
 import com.example.coino.feature_coins.presentation.detail_screen.DetailsScreenViewModel
+import com.ramcosta.composedestinations.annotation.Destination
 
+@Destination
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun LineCharts(
@@ -105,6 +107,7 @@ fun LineCharts(
 
 }
 
+@Destination
 @Composable
 fun RealLineChart(
     viewModel: DetailsScreenViewModel = hiltViewModel()

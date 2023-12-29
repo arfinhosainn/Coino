@@ -8,12 +8,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.coino.feature_coins.presentation.NavGraphs
 import com.example.coino.feature_coins.presentation.coins_screen.CoinListViewModel
-import com.example.coino.feature_coins.presentation.components.RealLineChart
-import com.example.coino.presentation.navigation.Navigation
+import com.example.coino.feature_coins.presentation.coins_screen.HomeScreen
+import com.example.coino.feature_coins.presentation.destinations.HomeScreenDestination
 import com.example.coino.presentation.theme.CoinoCryptoMarketTheme
+import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -29,10 +31,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    val navController = rememberNavController()
+                    DestinationsNavHost(navGraph = NavGraphs.root)
 
-                    Navigation(navController = navController
-                    )
                 }
             }
         }
