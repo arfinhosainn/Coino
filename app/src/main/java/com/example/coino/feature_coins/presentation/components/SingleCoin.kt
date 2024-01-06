@@ -21,8 +21,10 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.coino.feature_coins.domain.model.Coins
+import com.ramcosta.composedestinations.annotation.Destination
 
 
+@Destination
 @Composable
 fun SingleCoin(
     coins: Coins,

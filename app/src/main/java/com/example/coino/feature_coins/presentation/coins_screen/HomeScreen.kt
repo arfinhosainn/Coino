@@ -10,18 +10,29 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.NavController
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
-import com.example.coino.core.util.Screen
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.coino.feature_coins.domain.model.Coins
 import com.example.coino.feature_coins.presentation.components.SingleCoin
+import com.example.coino.feature_coins.presentation.destinations.LineChartsDestination
+import com.example.coino.feature_coins.presentation.destinations.RealLineChartDestination
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@RootNavGraph(start = true)
+@Destination
 @Composable
 fun HomeScreen(
-    coins: LazyPagingItems<Coins>,
-    navController: NavController
+    navigator: DestinationsNavigator
 ) {
+
+    val viewModel: CoinListViewModel = hiltViewModel()
+    val coin = viewModel.coinsPagingFlow.collectAsLazyPagingItems()
+
+    val coins : LazyPagingItems<Coins> = coin
 
     val context = LocalContext.current
     LaunchedEffect(key1 = coins.loadState) {
@@ -52,7 +63,7 @@ fun HomeScreen(
                     if (coinList != null) {
                         SingleCoin(coins = coinList,
                             onItemClick = {
-                                navController.navigate(Screen.CoinDetailsScreen.route + "/${it.id}")
+                                navigator.navigate(RealLineChartDestination())
                             })
                     }
                 }
