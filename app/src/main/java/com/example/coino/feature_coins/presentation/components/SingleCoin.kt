@@ -43,7 +43,7 @@ fun SingleCoin(
                     .data(coins.image).crossfade(true)
                     .build(),
                 modifier = Modifier
-                    .size(55.dp)
+                    .size(45.dp)
                     .clip(CircleShape),
                 contentDescription = null
             )
